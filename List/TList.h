@@ -142,7 +142,7 @@ TList<T>::TList(TList<T>& _v)
 template <class T>
 TList<T>::~TList()
 {
-  if (this->root != nullptr)
+  if (this->root != 0)
   {
     TListElem<T>* i = this->root;
     TListElem<T>* p = 0;
