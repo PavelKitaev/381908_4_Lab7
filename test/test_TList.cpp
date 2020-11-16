@@ -59,20 +59,12 @@ TEST(TList, can_get_elem_last)
   ASSERT_NO_THROW(temp.GetLast());
 }
 
-TEST(TList, can_del_elem_first)
+TEST(TList, can_del_elem)
 {
   TList<int> temp;
   temp.InsFirst(10);
   temp.InsLast(20);
   ASSERT_NO_THROW(temp.DelFirst());
-}
-
-TEST(TList, can_del_elem_last)
-{
-  TList<int> temp;
-  temp.InsFirst(10);
-  temp.InsLast(20);
-  ASSERT_NO_THROW(temp.DelLast());
 }
 
 TEST(TList, can_get_count)

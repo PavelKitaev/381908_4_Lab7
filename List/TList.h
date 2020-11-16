@@ -1,6 +1,5 @@
 #ifndef _LIST_
 #define _LIST_
-
 #include <iostream>
 
 using namespace std;
@@ -135,7 +134,7 @@ TList<T>::TList(TList<T>& _v)
     }
 
     end = j;
-    i = i->GetNext(); //next?
+    i = i->GetNext();
   }
 }
 
@@ -214,18 +213,43 @@ TList<T>& TList<T>::operator =(TList<T>& _v)
 template<class T>
 inline void TList<T>::InsFirst(T d)
 {
+  if (this->IsFull())
+  {
+    throw "Error";
+  }
+
   TListElem<T>* temp = new TListElem<T>(d);
   temp->SetNext(root);
   root = temp;
+  if (end == 0)
+  {
+    end = temp;
+  }
   count++;
 }
 
 template<class T>
 inline void TList<T>::InsLast(T d)
 {
-  TListElem<T>* temp = new TListElem<T>(d);
-  temp->SetNext(end);
-  end = temp;
+  if (this->IsFull())
+  {
+    throw "Error";
+  }
+
+  if (end == 0)
+  {
+    end = new TListElem<T>(d);
+  }
+  else
+  {
+    TListElem<T>* temp = new TListElem<T>(d);
+    end->SetNext(temp);
+    end = temp;
+  }
+  if (root == 0)
+  {
+    root = end;
+  }
   count++;
 }
 
